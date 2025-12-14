@@ -43,7 +43,7 @@ class CarSearchTests(TestCase):
         self.client.login(username="testuser", password="password")
 
     def test_search_by_existing_manufacturer(self):
-        """Search by manufacturer returns correct cars"""
+        """Search by model returns correct cars"""
         url = reverse("taxi:car-list") + "?search=c"
         response = self.client.get(url)
 
@@ -53,7 +53,7 @@ class CarSearchTests(TestCase):
         self.assertContains(response, self.car3.model)
 
     def test_search_by_nonexistent_manufacturer(self):
-        """Searching for a manufacturer that doesn't exist returns no result"""
+        """Searching for a model that doesn't exist returns no result"""
         url = reverse("taxi:car-list") + "?search=BMW"
         response = self.client.get(url)
 
